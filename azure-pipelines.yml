@@ -20,13 +20,8 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: ArtifactoryBuildPromotion@1
+- task: ArtifactoryPublishBuildInfo@1
   inputs:
     artifactoryService: 'artifactory-service'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    targetRepo: 'generic-local'
-    status: 'Released'
-    includeDependencies: false
-    copy: false
-    dryRun: false
